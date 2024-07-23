@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ًApplication</title>
+        <title>Paige's Roman Numeral Converter</title>
         @vite('resources/css/app.css')
     </head>
     <body>
