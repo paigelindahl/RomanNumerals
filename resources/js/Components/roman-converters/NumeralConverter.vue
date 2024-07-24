@@ -6,7 +6,7 @@
                     <div class="flex-col">
                         <div class="flex flex-col">
                             <label class="text-lg text-gray-600">Roman Numeral</label>
-                            <input v-model="romanDate" type="text" placeholder="XXII-VII-MMXXIII" class="p-1.5 border border-gray-200 rounded-md"/>
+                            <input v-model="romanDate" type="text" placeholder="XXII-VII-MMXXIII" @input="toUpperCase" class="uppercase p-1.5 border border-gray-200 rounded-md"/>
                         </div>
                         <div class="min-h-14">
                             <small v-show="validator" class="text-red-500">{{ validator }}</small>
@@ -54,6 +54,10 @@ const convertToDate = function() {
         validator.value = err.response.data.error;
     })
 }
+
+const toUpperCase = (event) => {
+  romanDate.value = event.target.value.toUpperCase();
+};
 
 const clear = function() {
     date.value = null;
