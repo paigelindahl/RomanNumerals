@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rules\RomanDate;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,7 +25,13 @@ class DateConversionController extends Controller
         'I' => 1
     ];
 
-    public function convertDateToRoman(Request $request)
+    /**
+     * Converts date to roman numeral string
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function convertDateToRoman(Request $request): JsonResponse
     {
         $rules = [
             'date' => 'required|string'
@@ -60,8 +67,11 @@ class DateConversionController extends Controller
 
     /**
      * Converts roman numeral string to a valid date
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function convertRomanToDate(Request $request)
+    public function convertRomanToDate(Request $request): JsonResponse
     {
         $rules = [
             'roman_date' => ['required', new RomanDate]
@@ -87,8 +97,11 @@ class DateConversionController extends Controller
 
     /**
      * Logic to determine integer conversion from roman numeral input
+     *
+     * @param string $roman
+     * @return int
      */
-    private function romanToInt($roman)
+    private function romanToInt($roman): int
     {
         $result = 0;
         $length = strlen($roman);
@@ -109,8 +122,11 @@ class DateConversionController extends Controller
 
     /**
      * Logic to convert number to roman numeral
+     *
+     * @param int $num
+     * @return string
      */
-    private function toRoman($num)
+    private function toRoman($num): string
     {
         $result = '';
         while ($num > 0) {
