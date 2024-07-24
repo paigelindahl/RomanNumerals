@@ -1,3 +1,26 @@
+## Roman Numeral Converter
+
+Requirements:
+- Node 18+
+- php8.0+
+
+Installation instructions:
+
+- Clone repo
+- cd into directory
+- composer install
+- npm install
+- copy env.example and paste it into a new .env file
+- php artisan key:generate
+- php artisan migrate
+- php artisan serve
+- npm run dev
+
+App should be live on localhost http://127.0.0.1:8000/
+
+  
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
