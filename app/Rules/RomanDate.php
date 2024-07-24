@@ -45,6 +45,6 @@ class RomanDate implements Rule
      */
     public function message()
     {
-        return 'The :attribute must be a valid Roman numeral date in the format D-M-Y. eg. XII-V-MMXX';
+        return 'This must be a valid Roman numeral date in the format D-M-Y. eg. XII-V-MMXX';
     }
 }
