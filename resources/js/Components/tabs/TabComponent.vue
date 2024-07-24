@@ -1,18 +1,18 @@
 <template>
     <div class="tabs">
-        <ul class="tab-list flex w-full relative list-none">
+        <ul class="flex w-full relative list-none">
             <li
                 v-for="(tab, index) in tabs"
                 :key="index"
-                :class="['tab-item w-full flex justify-center py-3 flex-1 text-center', { active: activeTab === index }]"
+                :class="['tab-item flex-1 text-center opacity-50 transition-opacity duration-300 w-full flex justify-center py-3 flex-1 text-center', { active: activeTab === index }]"
             >
-                <button class="tab-trigger" @click="setActiveTab(index)">
+                <button class="block p-2 text-xl font-medium" @click="setActiveTab(index)">
                 {{ tab }}
                 </button>
             </li>
-            <div class="tab-underline" :style="{ transform: `translateX(${activeTab * 100}%)` }"></div>
+            <div class="absolute -bottom-0.5 left-0 h-0.5 w-1/2 transition-transform duration-300 bg-blue-300" :style="{ transform: `translateX(${activeTab * 100}%)` }"></div>
         </ul>
-        <div class="tab-content">
+        <div class="py-3">
             <slot :name="`tab-${activeTab}`"></slot>
         </div>
     </div>
@@ -35,42 +35,8 @@ const setActiveTab = (index) => {
 };
 </script>
 
-<style>
-.tab-list {
-    border-bottom: 2px solid #e5e7eb;
-}
-
-.tab-item {
-  flex: 1;
-  text-align: center;
-  transition: opacity 0.3s;
-  opacity: 0.5;
-}
-
+<style scoped>
 .tab-item.active {
   opacity: 1;
 }
-
-.tab-trigger {
-  display: block;
-  padding: 10px;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.tab-content {
-  padding: 15px 0;
-}
-
-.tab-underline {
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  height: 2px;
-  width: 50%;
-  background-color: #3b82f6;
-  transition: transform 0.3s;
-}
-
 </style>
