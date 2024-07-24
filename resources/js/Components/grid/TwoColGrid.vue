@@ -11,11 +11,15 @@
             <div class="col-span-3 bg-blue-100 p-4 flex items-center">
                 <h4 class="text-gray-600">Roman Numerals:</h4>
             </div>
-            <div class="col-span-9 bg-blue-50 p-4 text-gray-600 flex items-center"><span v-show="show">{{ romanDate }}</span></div>
+            <div class="col-span-9 bg-blue-50 p-4 text-gray-600 flex items-center">
+                <span v-show="show">{{ romanDate }}</span>
+            </div>
             <div class="col-span-3 bg-blue-100 p-4 rounded-bl-lg flex items-center">
                 <h4 class="text-gray-600">Number Date:</h4>
             </div>
-            <div class="col-span-9 bg-blue-50 p-4 rounded-br-lg text-gray-600 flex items-center"><span v-show="show">{{ date }}</span></div>
+            <div class="col-span-9 bg-blue-50 p-4 rounded-br-lg text-gray-600 flex items-center">
+                <span v-show="show">{{ date }}</span>
+            </div>
         </div>
     </div>
 </div>
