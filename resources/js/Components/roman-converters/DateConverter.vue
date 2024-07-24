@@ -15,6 +15,9 @@
                                 auto-apply
                             ></VueDatePicker>
                         </div>
+                        <div class="min-h-14">
+                            <small v-show="validator" class="text-red-500">{{ validator }}</small>
+                        </div>
                         <div class="flex justify-end">
                             <button @click="clear" class="text-sm text-gray-600 mt-1 hover:text-gray-700">Clear</button>
                         </div>
@@ -43,6 +46,7 @@ const date = ref(null);
 const formattedDate = ref(null);
 const romanDate = ref(null);
 const show = ref(false);
+const validator = ref(null);
 
 const format = (date) => {
   const day = date.getDate();
@@ -72,6 +76,7 @@ const convertRoman = function() {
         console.log('success', res);
     }).catch((err) => {
         console.log('err', err);
+        validator.value = err.response.data.error;
     })
 }
 </script>

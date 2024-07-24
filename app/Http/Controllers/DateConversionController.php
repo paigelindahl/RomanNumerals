@@ -74,6 +74,7 @@ class DateConversionController extends Controller
         }
 
         $romanDate = $request->input('roman_date');
+
         $parts = explode('-', $romanDate);
         list($day, $month, $year) = array_map([$this, 'romanToInt'], $parts);
 

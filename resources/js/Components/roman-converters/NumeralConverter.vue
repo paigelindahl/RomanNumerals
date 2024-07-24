@@ -8,6 +8,9 @@
                             <label class="text-lg text-gray-600">Roman Numeral</label>
                             <input v-model="romanDate" type="text" placeholder="XXII-VII-MMXXIII" class="p-1.5 border border-gray-200 rounded-md"/>
                         </div>
+                        <div class="min-h-14">
+                            <small v-show="validator" class="text-red-500">{{ validator }}</small>
+                        </div>
                         <div class="flex justify-end">
                             <button @click="clear" class="text-sm text-gray-600 mt-1 hover:text-gray-700">Clear</button>
                         </div>
@@ -33,9 +36,11 @@ import axios from 'axios';
 const romanDate = ref(null);
 const date = ref(null);
 const show = ref(false);
+const validator = ref(null);
 
 watch(romanDate, (newValue, oldValue) => {
     show.value = false;
+    validator.value = null;
 })
 
 // convert from roman numerals to date
@@ -46,12 +51,14 @@ const convertToDate = function() {
         show.value = true;
     }).catch((err) => {
         console.log('err', err);
+        validator.value = err.response.data.error;
     })
 }
 
 const clear = function() {
     date.value = null;
     romanDate.value = null;
+    validator.value = null;
     show.value = false;
 }
 
