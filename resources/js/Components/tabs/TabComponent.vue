@@ -6,7 +6,7 @@
                 :key="index"
                 :class="['tab-item flex-1 text-center opacity-50 transition-opacity duration-300 w-full flex justify-center py-3 flex-1 text-center', { active: activeTab === index }]"
             >
-                <button class="block p-2 text-xl font-medium" @click="setActiveTab(index)">
+                <button class="block p-2 text-xl font-medium text-gray-700" @click="setActiveTab(index)">
                 {{ tab }}
                 </button>
             </li>
