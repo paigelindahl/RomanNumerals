@@ -49,11 +49,15 @@ const show = ref(false);
 const validator = ref(null);
 
 const format = (date) => {
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  formattedDate.value = `${day}-${month}-${year}`;
-  return formattedDate.value;
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    day = day < 10 ? '0' + day : day;
+    month = month < 10 ? '0' + month : month;
+
+    formattedDate.value = `${day}-${month}-${year}`;
+    return formattedDate.value;
 }
 
 const clear = function() {
@@ -73,7 +77,6 @@ const convertRoman = function() {
     .then((res) => {
         romanDate.value = res.data.roman_date;
         show.value = true;
-        console.log('success', res);
     }).catch((err) => {
         console.log('err', err);
         validator.value = err.response.data.error;
