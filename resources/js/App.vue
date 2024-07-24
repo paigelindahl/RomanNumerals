@@ -3,15 +3,10 @@
         <h1 class="sr-only">Roman Numeral Date Converter</h1>
         <TabComponent :tabs="['Date to Roman', 'Roman to Date']">
             <template #tab-0>
-            <div>
                 <DateConverter></DateConverter>
-            </div>
             </template>
             <template #tab-1>
-            <div>
-                <h2>Tab 2 Content</h2>
-                <p>This is the content for Tab 2.</p>
-            </div>
+                <NumeralConverter></NumeralConverter>
             </template>
         </TabComponent>
     </div>
@@ -20,6 +15,6 @@
 <script setup>
 import TabComponent from "@/Components/tabs/TabComponent.vue";
 import DateConverter from "@/Components/roman-converters/DateConverter.vue";
-
+import NumeralConverter from "@/Components/roman-converters/NumeralConverter.vue";
 
 </script>
