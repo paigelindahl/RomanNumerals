@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center my-20">
-        <TwoColGrid :romanDate="romanDate" :formattedDate="formattedDate">
+        <TwoColGrid :romanDate="romanDate" :date="formattedDate">
             <template v-slot:input-container>
                 <div class="flex flex-col space-y-3">
                     <div>
@@ -45,6 +45,7 @@ const format = (date) => {
   return formattedDate.value;
 }
 
+// convert from date to roman numerals
 const convertRoman = function() {
     axios.post('convert-date', {date: formattedDate.value})
     .then((res) => {
