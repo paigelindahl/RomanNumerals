@@ -2,34 +2,36 @@
     <div class="flex justify-center my-10">
         <TwoColGrid :romanDate="romanDate" :date="formattedDate" :show="show">
             <template v-slot:input-container>
-                <div class="flex flex-col space-y-3">
-                    <div class="flex-col">
-                        <div>
-                            <label class="text-lg text-gray-600">Date</label>
-                            <VueDatePicker
-                                v-model="date"
-                                placeholder=""
-                                :enable-time-picker="false"
-                                :format="format"
-                                :clearable="false"
-                                auto-apply
-                            ></VueDatePicker>
-                        </div>
-                        <div class="min-h-14">
-                            <small v-show="validator" class="text-red-500">{{ validator }}</small>
+                <form @submit.prevent="convertRoman">
+                    <div class="flex flex-col space-y-3">
+                        <div class="flex-col">
+                            <div>
+                                <label class="text-lg text-gray-600">Date</label>
+                                <VueDatePicker
+                                    v-model="date"
+                                    placeholder=""
+                                    :enable-time-picker="false"
+                                    :format="format"
+                                    :clearable="false"
+                                    auto-apply
+                                ></VueDatePicker>
+                            </div>
+                            <div class="min-h-14">
+                                <small v-show="validator" class="text-red-500">{{ validator }}</small>
+                            </div>
+                            <div class="flex justify-end">
+                                <button @click="clear" type="button" class="text-sm text-gray-600 mt-1 hover:text-gray-800">Clear</button>
+                            </div>
                         </div>
                         <div class="flex justify-end">
-                            <button @click="clear" class="text-sm text-gray-600 mt-1 hover:text-gray-800">Clear</button>
+                            <button
+                                type="submit"
+                                :disabled="!formattedDate"
+                                class="w-fit bg-blue-500 hover:bg-blue-600 disabled:hover:bg-blue-500 transition-all duration-500 px-4 py-3 rounded-lg text-white"
+                            >Convert</button>
                         </div>
                     </div>
-                    <div class="flex justify-end">
-                        <button
-                            @click="convertRoman"
-                            :disabled="!formattedDate"
-                            class="w-fit bg-blue-500 hover:bg-blue-600 disabled:hover:bg-blue-500 transition-all duration-500 px-4 py-3 rounded-lg text-white"
-                        >Convert</button>
-                    </div>
-                </div>
+                </form>
             </template>
         </TwoColGrid>
     </div>
