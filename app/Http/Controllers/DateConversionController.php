@@ -89,7 +89,7 @@ class DateConversionController extends Controller
         list($day, $month, $year) = array_map([$this, 'romanToInt'], $parts);
 
         if ($day < 1 || $day > 31 || $month < 1 || $month > 12) {
-            return response()->json(['error' => 'Invalid date range.'], 400);
+            return response()->json(['error' => 'Invalid date'], 400);
         }
 
         return response()->json(['date' => sprintf('%02d-%02d-%04d', $day, $month, $year)]);
